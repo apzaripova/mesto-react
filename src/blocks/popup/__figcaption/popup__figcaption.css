@@ -1,0 +1,20 @@
+.popup__figcaption {
+    font-size: 12px;
+    line-height: 15px;
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 821px) {
+    .popup__figcaption {
+        right: -30px;
+    }
+}
+
+@media screen and (max-width: 472px) {
+    .popup__figcaption {
+        right: 0;
+    }
+}
