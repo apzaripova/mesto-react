@@ -10,19 +10,19 @@
     white-space: nowrap;
   }
   
-  @media (max-width : 1023px) {
+  @media screen and (max-width: 1023px) {
     .profile__name{
       max-width: 340px;
     }
   }
   
-  @media (max-width : 767px) {
+  @media screen and (max-width: 767px) {
     .profile__name{
       margin: 0 auto;
     }
   }
   
-  @media (max-width : 500px) {
+  @media screen and (max-width: 500px) {
     .profile__name{
       max-width: 250px;
       font-size: 27px;
