@@ -1,7 +1,7 @@
 class Api {
     constructor(options) {
         this._url = options.baseUrl;
-        this._headres = options.headers;
+        this._headers = options.headers;
     }
 
     _handleOriginalResponse(res) {
@@ -15,20 +15,14 @@ class Api {
     getUserInfo() {
         return fetch(`${this._url}/users/me`, {
           method: 'GET',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers
         }).then(this._handleOriginalResponse)
       }
 
     setUserAvatar(item) {
         return fetch(`${this._url}/users/me/avatar`, {
           method: 'PATCH',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers,
           body: JSON.stringify({
             avatar: item.avatar
           })
@@ -38,20 +32,14 @@ class Api {
     getCards() {
         return fetch(`${this._url}/cards`, {
           method: 'GET',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers
         }).then(this._handleOriginalResponse)
       }
 
       postCard(item) {
         return fetch(`${this._url}/cards`, {
           method: 'POST',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers,
           body: JSON.stringify({
             name: item.name,
             link: item.link
@@ -62,40 +50,28 @@ class Api {
     deleteCard(id) {
         return fetch(`${this._url}/cards/${id}`, {
           method: 'DELETE',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers
         }).then(this._handleOriginalResponse)
       }
 
     setLike(id) {
         return fetch(`${this._url}/cards/likes/${id}`, {
           method: 'PUT',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers
         }).then(this._handleOriginalResponse)
       }
 
     deleteLike(id) {
         return fetch(`${this._url}/cards/likes/${id}`, {
           method: 'DELETE',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers
         }).then(this._handleOriginalResponse)
       }
 
     setUserInfo(item) {
         return fetch(`${this._url}/users/me`, {
           method: 'PATCH',
-          headers: {
-            authorization: '7756de4b-55ba-47f8-9f76-db9dfc9e3dd4',
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers,
           body: JSON.stringify({
             name: item.firstname,
             about: item.job
