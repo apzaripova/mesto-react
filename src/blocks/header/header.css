@@ -4,19 +4,19 @@
     border-bottom: 1px solid rgba(84, 84, 84, .7);
   }
   
-  @media (max-width : 1023px) {
+  @media screen and (max-width : 1023px) {
     .header {
       width: 682px;
     }
   }
   
-  @media (max-width : 767px) {
+  @media screen and (max-width : 767px) {
     .header {
       width: 482px;
     }
   }
   
-  @media (max-width : 500px) {
+  @media screen and (max-width : 500px) {
     .header {
       width: 320px;
       margin: 28px auto 42px;
