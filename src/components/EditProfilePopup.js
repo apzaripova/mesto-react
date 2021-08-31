@@ -30,7 +30,7 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
     React.useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
-      }, [currentUser]);
+      }, [currentUser, isOpen]);
 
     return (
         <PopupWithForm  title="Редактировать профиль" submitButtonText="Сохранить"  name="profileEdit" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
@@ -44,7 +44,7 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
                         required 
                         value={name || ''} 
                         onChange={handleNameChange}/>  
-              <span classname="popup__input-error input-name-error"></span>
+              <span className="popup__input-error input-name-error"></span>
               <input className="popup__input popup__input_type_job " 
                         id="input-job" 
                         type="text" 
