@@ -36,8 +36,7 @@ export default function Card({card, onCardClick, onCardDelete, onCardLike, }) {
     return (
         <li className="card">
             <div className="card__container">
-                            <img className="card__photo" alt={card.name} src={card.link} onClick={handleClick}
-                                style={{ backgroundImage: `url(${card.link })` }}/>
+                            <img className="card__photo" alt={card.name} src={card.link} onClick={handleClick} />
                             <button className={cardDeleteButtonClassName} onClick={handleDeleteCard}></button>
             </div>
                         <div className="card__info">

@@ -14,10 +14,10 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+    const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
     const [cards, setCards] = React.useState([]);
     const [currentUser, setCurrentUser] = React.useState({});
     const [selectedCard, setSelectedCard] = React.useState({
-        isOpen: false,
         link: '',
         name: ''
       });
@@ -44,20 +44,17 @@ function App() {
         setIsAddPlacePopupOpen(true);
     };
 
-    function handleCardClick(link, name) {
-        setSelectedCard({
-          isOpen: true,
-          link: link,
-          name: name
-        });
-      }
+    function handleCardClick(card) {
+      setSelectedCard(card);
+      setIsImagePopupOpen(!isImagePopupOpen);
+    }
 
     const closeAllPopups = () => {
         setIsEditProfilePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
         setIsAddPlacePopupOpen(false);
+        setIsImagePopupOpen(false);
         setSelectedCard({
-            isOpen: false,
             link: '',
             name: ''
           })
@@ -68,12 +65,15 @@ function App() {
       const isLiked = card.likes.some(i => i._id === currentUser._id);
       
       // Отправляем запрос в API и получаем обновлённые данные карточки
-      api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      api.setLike(card._id, !isLiked).then((newCard) => {
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-      });
+      })
+      .catch((err) => {
+        console.log(`Ошибка лайка: ${err}`);
+      })
   }
 
-  //Функция удаления карточки, по аналогии с функцией лайка
+  
   function handleDeleteClick(card) {
     api.deleteCard(card._id)
       .then(() => {
@@ -134,6 +134,7 @@ function App() {
         <ImagePopup
           card={selectedCard}
           onClose={closeAllPopups}
+          isOpen={isImagePopupOpen}
         />
     </div>
     </CurrentUserContext.Provider>

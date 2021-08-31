@@ -10,10 +10,10 @@ export default function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardCl
     return (
         <main className="content">
         <section className="profile">
-                <div className="profile__avatar-container" style={{ backgroundImage: `url(${currentUser.avatar})` }}> 
+                <div className="profile__avatar-container"> 
                     <img className="profile__avatar" 
-                        src=""
-                        alt="Аватарка" 
+                        src={currentUser.avatar}
+                        alt='Аватар пользователя'
                     />
                     <button className="profile__avatar-button profile__avatar" aria-label="форма обновления аватара" onClick={onEditAvatar}></button>
                 </div>
@@ -26,14 +26,15 @@ export default function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardCl
         </section>
         <section className="cards">
         <ul className="cards__list">
-            {cards.map(card =>
+            {cards.map(card => (
                 <Card 
-                    key={card._id}
-                    card={card}
-                    onCardClick={ onCardClick }
-                    onCardLike={ onCardLike }
-                    onCardDelete={ onCardDelete } 
-                />
+                key={card._id}
+                card={card}
+                onCardClick={ onCardClick }
+                onCardLike={ onCardLike }
+                onCardDelete={ onCardDelete } 
+            />
+            )
             )}
         </ul>
         </section>
