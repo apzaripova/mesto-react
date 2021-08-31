@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function ImagePopup(props) { 
+export default function ImagePopup({onClose, card}) { 
     return (
-        <div className={props.card.isOpen ? 'popup popup_active': 'popup'} id="open-image">
+        <div className={card.isOpen ? 'popup popup_active': 'popup'} id="open-image">
         <div className="popup__image-container popup__container_image">
-            <button className="popup__close-button" id="closeImage" type="button" aria-label="Закрыть открытие карточки" onClick={props.onClose}></button>
-            <img className="popup__picture" src={ props.card.link } alt={ props.card.name } />
-            <figcaption className="popup__figcaption">{props.card.name}</figcaption>
+            <button className="popup__close-button" id="closeImage" type="button" aria-label="Закрыть открытие карточки" onClick={onClose}></button>
+            <img className="popup__picture" src={ card.link } alt={ card.name } />
+            <figcaption className="popup__figcaption">{card.name}</figcaption>
         </div>
     </div>
     )
